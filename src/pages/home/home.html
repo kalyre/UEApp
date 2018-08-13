@@ -1,14 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      UEApp
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <form>
+    <ion-item>
+      <ion-label color="primary" floating>Totem/Nombre</ion-label>
+      <ion-input name="username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Contraseña</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
 
-  <h1>
-    Hola <strong><u><font color="pink">Laurita</font></u></strong>, ya he conseguido hacer el control de versiones.
-  </h1>
+    <button ion-button block (click)="login()">Entrar</button>
+    <button ion-button block (click)="createaccount()" color="secondary">Solicitar acceso</button>
+  </form>
 </ion-content>
