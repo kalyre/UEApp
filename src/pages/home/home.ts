@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Http } from '@angular/http';
 
 import { pbkdf2 } from 'pbkdf2';
 
@@ -11,17 +12,12 @@ export class HomePage {
   username : string;
   password: string;
   hashedPassword: string;
+  userData: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public http: Http) {
 
   }
 
-  // Server: sql2.freemysqlhosting.net
-  // Name: sql2251759
-  // Username: sql2251759
-  // Password: pZ7%yE4*
-  // Port number: 3306
-  
   login(){
     console.log("User: " + this.username);
     console.log("Password: " + this.password);
@@ -31,6 +27,15 @@ export class HomePage {
       console.log("Hashed password: " + this.hashedPassword);
     });
   }
+
+  getData(){
+   this.http.get("http://ueapp.epizy.com/scripts/json.php").subscribe( data => {
+   this.userData = JSON.parse(data["_body"]);
+   console.log(this.userData);
+  }, err =>{
+     console.log(err);
+   });
+ }
 
    encrypt(){
     return new Promise <string> ((resolve, reject) => {
