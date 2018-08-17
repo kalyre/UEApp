@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { pbkdf2 } from 'pbkdf2';
 
@@ -25,14 +25,23 @@ export class HomePage {
     this.encrypt().then(hashed =>{
       this.hashedPassword = hashed;
       console.log("Hashed password: " + this.hashedPassword);
+      this.getData();
     });
   }
 
   getData(){
-   this.http.get("http://ueapp.epizy.com/scripts/json.php").subscribe( data => {
-   this.userData = JSON.parse(data["_body"]);
-   console.log(this.userData);
-  }, err =>{
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/json' );
+
+    let options = new RequestOptions({ headers: headers });
+
+   this.http.get("http://312cruzdelsur.es/scripts/json.php").subscribe( data => {
+     this.userData = JSON.parse(data["_body"]);
+     console.log(this.userData);
+     console.log("Username: " + this.userData[0].username);
+     // console.log("Password: " + this.userData[0].password);
+   }, err =>{
      console.log(err);
    });
  }
