@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { NavController, LoadingController } from 'ionic-angular';
+import { Http } from '@angular/http';
 
 import { pbkdf2 } from 'pbkdf2';
+import { globalVariables } from '../globalVariables';
+import { MainPage } from '../main/main';
 
 @Component({
   selector: 'page-home',
@@ -11,38 +13,45 @@ import { pbkdf2 } from 'pbkdf2';
 export class HomePage {
   username : string;
   password: string;
-  hashedPassword: string;
   userData: any;
 
-  constructor(public navCtrl: NavController, public http: Http) {
+  constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
 
   }
 
   login(){
-    console.log("User: " + this.username);
-    console.log("Password: " + this.password);
+    let loader = this.loadingCtrl.create({
+      content: 'Verificando...'
+    });
 
-    this.encrypt().then(hashed =>{
-      this.hashedPassword = hashed;
-      console.log("Hashed password: " + this.hashedPassword);
-      this.getData();
+    loader.present().then(()=>{
+      this.encrypt().then(hashed =>{
+        this.isOkLogin(hashed).then( isOkLogin => {
+          if(isOkLogin){
+            loader.dismiss();
+            this.navCtrl.push(MainPage);
+            // console.log("Logged!");
+          }else{
+            loader.dismiss();
+          }
+        });
+      });
     });
   }
 
-  getData(){
-    var headers = new Headers();
-    headers.append("Accept", 'application/json');
-    headers.append('Content-Type', 'application/json' );
+  isOkLogin(hashedPassword:string){
+    return new Promise <boolean> ((resolve, reject) => {
+     this.http.get(globalVariables.PHP_SERVER + "login.php").subscribe( data => {
+      this.userData = JSON.parse(data["_body"]);
 
-    let options = new RequestOptions({ headers: headers });
-
-   this.http.get("http://312cruzdelsur.es/scripts/json.php").subscribe( data => {
-     this.userData = JSON.parse(data["_body"]);
-     console.log(this.userData);
-     console.log("Username: " + this.userData[0].username);
-     // console.log("Password: " + this.userData[0].password);
-   }, err =>{
-     console.log(err);
+      for(var idx = 0; idx < this.userData.length; idx++){
+        if(this.userData[idx].username == this.username && this.userData[idx].password == hashedPassword)
+          resolve(true);
+      }
+        resolve(false);
+     }, err =>{
+       console.log(err);
+     });
    });
  }
 
