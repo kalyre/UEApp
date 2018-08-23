@@ -7,6 +7,7 @@
 </ion-header> -->
 
 <ion-content padding>
+  <ion-img width="150" height="150" src="assets/imgs/logo2.png"></ion-img>
   <form>
     <ion-item>
       <ion-label color="primary" floating>Totem/Nombre</ion-label>
@@ -16,8 +17,8 @@
       <ion-label color="primary" floating>Contraseña</ion-label>
       <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
     </ion-item>
-
+    <br>
     <button ion-button block (click)="login()">Entrar</button>
-    <button ion-button block (click)="isOkLogin()" color="secondary">Solicitar acceso</button>
+    <button ion-button block (click)="trampa()" color="secondary">Solicitar acceso</button>
   </form>
 </ion-content>

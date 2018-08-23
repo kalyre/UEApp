@@ -10,6 +10,7 @@ import { MainPage } from '../main/main';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
   username : string;
   password: string;
@@ -17,6 +18,10 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
 
+  }
+
+  trampa(){
+    this.navCtrl.setRoot(MainPage);
   }
 
   login(){
@@ -29,8 +34,7 @@ export class HomePage {
         this.isOkLogin(hashed).then( isOkLogin => {
           if(isOkLogin){
             loader.dismiss();
-            this.navCtrl.push(MainPage);
-            // console.log("Logged!");
+            this.navCtrl.setRoot(MainPage);
           }else{
             loader.dismiss();
           }

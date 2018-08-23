@@ -5,16 +5,29 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { HttpModule } from '@angular/http';
 import { Http } from '@angular/http';
+
+import { HomePage } from '../pages/home/home';
 import { MainPage } from '../pages/main/main';
+import { EscultometroPage } from '../pages/escultometro/escultometro';
+import { BibliotecaPage } from '../pages/biblioteca/biblioteca';
+import { ConfiguracionPage } from '../pages/configuracion/configuracion';
+import { LogrosPage } from '../pages/logros/logros';
+import { CalendarioPage } from '../pages/calendario/calendario';
+import { PortafoliosPage } from '../pages/portafolios/portafolios';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    MainPage
+    MainPage,
+    EscultometroPage,
+    BibliotecaPage,
+    ConfiguracionPage,
+    LogrosPage,
+    CalendarioPage,
+    PortafoliosPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +38,13 @@ import { MainPage } from '../pages/main/main';
   entryComponents: [
     MyApp,
     HomePage,
-    MainPage
+    MainPage,
+    EscultometroPage,
+    BibliotecaPage,
+    ConfiguracionPage,
+    LogrosPage,
+    CalendarioPage,
+    PortafoliosPage
   ],
   providers: [
     StatusBar,
