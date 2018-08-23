@@ -8,5 +8,28 @@
 </ion-header>
 
 <ion-content padding>
- <p> Esto es el escultómetro </p>
+
+<!-- Tabs -->
+ <ion-segment [(ngModel)]="mymodel">
+       <ion-segment-button value="integracion">
+         <!-- <ion-icon name="map"></ion-icon> -->
+         <span>Integración</span>
+       </ion-segment-button>
+       <ion-segment-button value="participacion">
+         <!-- <ion-icon name="feedback"></ion-icon> -->
+         <span>Participación</span>
+       </ion-segment-button>
+       <ion-segment-button value="animacion">
+         <!-- <ion-icon name="work"></ion-icon> -->
+         <span>Animación</span>
+       </ion-segment-button>
+ </ion-segment>
+<br>
+
+<!-- Contenidos -->
+ <div [ngSwitch]="mymodel">
+    <ion-list *ngSwitchCase="'integracion'"><ion-item>Contenido de integración</ion-item></ion-list>
+    <ion-list *ngSwitchCase="'participacion'"><ion-item>Contenido de participacion</ion-item></ion-list>
+    <ion-list *ngSwitchCase="'animacion'"><ion-item>Contenido de animacion</ion-item></ion-list>
+</div>
 </ion-content>

@@ -21,27 +21,25 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
+    // Elementos del sidebar
     this.pages = [
-      { title: 'Inicio', component: MainPage },
-      { title: 'Escultómetro', component:  EscultometroPage},
-      { title: 'Portafolios', component:  PortafoliosPage},
-      { title: 'Calendario', component:  CalendarioPage},
-      { title: 'Biblioteca', component:  BibliotecaPage},
-      { title: 'Logros', component:  LogrosPage},
-      { title: 'Configuración', component:  ConfiguracionPage}
-
+      { title: 'Inicio', component: MainPage, icon: "home" },
+      { title: 'Escultómetro', component:  EscultometroPage, icon: "stats"},
+      { title: 'Portafolios', component:  PortafoliosPage, icon: "book"},
+      { title: 'Calendario', component:  CalendarioPage, icon: "calendar"},
+      { title: 'Biblioteca', component:  BibliotecaPage, icon: "school"},
+      { title: 'Logros', component:  LogrosPage, icon: "thermometer"},
+      { title: 'Configuración', component:  ConfiguracionPage, icon: "cog"},
+      { title: 'Desconectar', component:  HomePage, icon: "log-out"}
     ];
 
   }
-  // BibliotecaPage,
-  // ConfiguracionPage,
-  // LogrosPage
+
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
