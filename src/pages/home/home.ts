@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, MenuController } from 'ionic-angular';
 import { Http } from '@angular/http';
 
 import { pbkdf2 } from 'pbkdf2';
@@ -16,8 +16,9 @@ export class HomePage {
   password: string;
   userData: any;
 
-  constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
-
+  constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController, public menuCtrl: MenuController) {
+    //Evita el swip del menú para esta página
+     this.menuCtrl.enable(false, 'myMenu');
   }
 
   trampa(){
