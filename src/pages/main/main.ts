@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { globalVariables } from '../globalVariables';
+// import { GlobalFunctionsProvider } from '../../providers/global-functions/global-functions';
 
 /**
  * Generated class for the MainPage page.
@@ -15,9 +17,15 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 })
 export class MainPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController,
+    // public globalFunction: GlobalFunctionsProvider
+  ) {
     //Reactiva el sidemenu
     this.menuCtrl.enable(true, 'myMenu');
+
+    //Comprueba las notificaciones TODO => Activar
+    // if(globalVariables.ROL > 1)
+    //   globalFunction.adminHasNotifications();
   }
 
   ionViewDidLoad() {

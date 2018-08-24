@@ -11,6 +11,8 @@ import { LogrosPage } from '../pages/logros/logros';
 import { ConfiguracionPage } from '../pages/configuracion/configuracion';
 import { CalendarioPage } from '../pages/calendario/calendario';
 import { PortafoliosPage } from '../pages/portafolios/portafolios';
+import { globalVariables } from '../pages/globalVariables';
+import { AdministracionPage } from '../pages/administracion/administracion';
 
 
 @Component({
@@ -33,7 +35,7 @@ export class MyApp {
       { title: 'Portafolios', component:  PortafoliosPage, icon: "book"},
       { title: 'Calendario', component:  CalendarioPage, icon: "calendar"},
       { title: 'Biblioteca', component:  BibliotecaPage, icon: "school"},
-      { title: 'Logros', component:  LogrosPage, icon: "thermometer"},
+      { title: 'Logros', component:  LogrosPage, icon: "trophy"},
       { title: 'Configuración', component:  ConfiguracionPage, icon: "cog"},
       { title: 'Desconectar', component:  HomePage, icon: "log-out"}
     ];
@@ -53,5 +55,29 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  //Superuser
+  isSuperUser(){
+    if(globalVariables.ROL > 0)
+      return true;
+    else
+      return false;
+  }
+
+  openControlPanel(){
+    this.nav.setRoot(AdministracionPage);
+  }
+
+  //Badge
+  getNotifications(){
+    return globalVariables.NOTIFICATIONS;
+  }
+
+  showNotifications(){
+    if(globalVariables.ADMIN_HAS_NOTIFICATIONS)
+      return true;
+    else
+      return false;
   }
 }

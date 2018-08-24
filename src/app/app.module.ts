@@ -16,6 +16,8 @@ import { ConfiguracionPage } from '../pages/configuracion/configuracion';
 import { LogrosPage } from '../pages/logros/logros';
 import { CalendarioPage } from '../pages/calendario/calendario';
 import { PortafoliosPage } from '../pages/portafolios/portafolios';
+import { AdministracionPage } from '../pages/administracion/administracion';
+import { GlobalFunctionsProvider } from '../providers/global-functions/global-functions';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { PortafoliosPage } from '../pages/portafolios/portafolios';
     ConfiguracionPage,
     LogrosPage,
     CalendarioPage,
-    PortafoliosPage
+    PortafoliosPage,
+    AdministracionPage
   ],
   imports: [
     BrowserModule,
@@ -44,12 +47,14 @@ import { PortafoliosPage } from '../pages/portafolios/portafolios';
     ConfiguracionPage,
     LogrosPage,
     CalendarioPage,
-    PortafoliosPage
+    PortafoliosPage,
+    AdministracionPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GlobalFunctionsProvider
   ]
 })
 export class AppModule {}

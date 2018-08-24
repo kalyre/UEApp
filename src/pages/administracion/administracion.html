@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Administración</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Esto es el menú de administración</p>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="white">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3>
+          <!-- Subir notas escultómetro -->
+          <button menuClose ion-item>
+            <ion-icon name="list-box" item-left></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-3>
+          <!-- Subir noticias -->
+          <button menuClose ion-item>
+            <ion-icon name="cloud-upload" item-left></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-3>
+          <!--  -->
+          <button menuClose ion-item>
+            <ion-icon name="paper" item-left></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-3>
+          <!-- Aceptar nuevo usuario -->
+          <button id="addPerson" menuClose ion-item>
+            <ion-icon name="person-add" item-left></ion-icon>
+            <ion-badge id="addPersonBadge" color="danger" *ngIf="showNotifications()">{{getNotifications()}}</ion-badge>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

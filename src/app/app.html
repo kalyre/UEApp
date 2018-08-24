@@ -7,10 +7,28 @@
 
   <ion-content>
     <ion-list>
+      <!-- Sección escultas -->
+      <ion-item-divider>
+        Escultas
+      </ion-item-divider>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         <ion-icon [name]="p.icon" item-left></ion-icon>
         {{p.title}}
       </button>
+      <br>
+
+      <!-- Sección scouters -->
+      <ion-item-divider *ngIf="isSuperUser()">
+        Scouters
+      </ion-item-divider>
+      <button menuClose ion-item *ngIf="isSuperUser()" (click)="openControlPanel()">
+        <ion-icon name="finger-print" item-left></ion-icon>
+        Administrar
+        <ion-badge color="danger" *ngIf="showNotifications()">{{getNotifications()}}</ion-badge>
+      </button>
+
+      <!-- Sección superuser -->
+      <!-- TODO -->
     </ion-list>
   </ion-content>
 </ion-menu>
