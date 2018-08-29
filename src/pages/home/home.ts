@@ -12,13 +12,25 @@ import { MainPage } from '../main/main';
 })
 
 export class HomePage {
+  //Input del usuario
   username : string;
   password: string;
+
+  //Resultado de DB
   userData: any;
+
+  //Tabs:
+  mymodel: string;
+
+  type: string = 'password';
+  showPass: boolean = false;
 
   constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController, public menuCtrl: MenuController) {
     //Evita el swip del menú para esta página
      this.menuCtrl.enable(false, 'myMenu');
+
+    //Asigna el tab selecionado por defecto
+    this.mymodel = "login";
   }
 
   trampa(){
@@ -42,6 +54,20 @@ export class HomePage {
         });
       });
     });
+  }
+
+  register(){
+
+  }
+
+  showPassword() {
+    this.showPass = !this.showPass;
+
+    if(this.showPass){
+      this.type = 'text';
+    } else {
+      this.type = 'password';
+    }
   }
 
   isOkLogin(hashedPassword:string){

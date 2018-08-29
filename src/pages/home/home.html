@@ -1,31 +1,70 @@
-<!-- <ion-header>
-  <ion-navbar>
-    <ion-title>
-      UEApp
-    </ion-title>
-  </ion-navbar>
-</ion-header> -->
-
 <ion-content padding class="bg-image">
-  <form>
+
     <div class="container">
-      <!-- <h2 color="pink"> UEApp </h2> -->
       <div class="prueba">
         <ion-avatar>
-          <img src="assets/imgs/logo2.png"><img>
+          <!-- <img src="assets/imgs/logo2.png"><img> -->
         </ion-avatar>
       </div>
-      <ion-item class="items">
-        <ion-label color="pink" floating>Totem/Nombre</ion-label>
-        <ion-input name="username" [(ngModel)]="username"></ion-input>
-      </ion-item>
-      <ion-item class="items">
-        <ion-label color="pink" floating>Contraseña</ion-label>
-        <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
-      </ion-item>
+
+      <!-- Tabs -->
+      <div padding>
+       <ion-segment [(ngModel)]="mymodel" name="tabs">
+             <ion-segment-button value="login">
+               <span>Login</span>
+             </ion-segment-button>
+             <ion-segment-button value="register">
+               <span>Registrar</span>
+             </ion-segment-button>
+       </ion-segment>
+     </div>
       <br>
-      <button ion-button block outline (click)="login()" color="pink">Entrar</button>
-      <button ion-button block outline (click)="trampa()" color="pink">Solicitar acceso</button>
+
+      <!-- Contenidos -->
+       <div [ngSwitch]="mymodel">
+         <!-- Pestaña de login -->
+          <ion-list *ngSwitchCase="'login'">
+            <form>
+              <ion-item class="items">
+                <ion-label color="pink" floating>Totem/Nombre</ion-label>
+                <ion-input name="username" [(ngModel)]="username"></ion-input>
+              </ion-item>
+
+              <ion-item class="items">
+                <ion-label color="pink" floating>Contraseña</ion-label>
+                <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
+              </ion-item>
+
+              <br>
+
+              <button ion-button block outline (click)="login()" color="pink">Entrar</button>
+              <button ion-button block outline (click)="trampa()" color="pink">Trampa</button>
+            </form>
+          </ion-list>
+
+          <!-- Pestaña de registro -->
+          <ion-list *ngSwitchCase="'register'">
+            <form>
+              <ion-item class="items">
+                <ion-label color="pink" floating>Totem/Nombre</ion-label>
+                <ion-input name="username" [(ngModel)]="username"></ion-input>
+              </ion-item>
+
+              <ion-item class="items">
+                <ion-label color="pink" floating>Contraseña</ion-label>
+                <!-- <ion-input type="{{type}}" name="password" ngModel #password="ngModel" required pattern=".{4,10}"></ion-input> -->
+                <ion-input type="{{type}}" name="password" [(ngModel)]="password"></ion-input>
+
+                <!-- Mostrar contraseña -->
+                <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-off-outline"></ion-icon></button>
+                <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="ios-eye-outline"></ion-icon></button>
+              </ion-item>
+              
+              <br>
+
+              <button ion-button block outline (click)="register()" color="pink">Registrar</button>
+            </form>
+          </ion-list>
+      </div>
     </div>
-  </form>
 </ion-content>
