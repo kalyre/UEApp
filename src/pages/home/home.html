@@ -7,18 +7,25 @@
 </ion-header> -->
 
 <ion-content padding class="bg-image">
-  <!-- <ion-img width="150" height="150" src="assets/imgs/logo2.png"></ion-img> -->
   <form>
-    <ion-item>
-      <ion-label color="primary" floating>Totem/Nombre</ion-label>
-      <ion-input name="username" [(ngModel)]="username"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" floating>Contraseña</ion-label>
-      <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <br>
-    <button ion-button block outline (click)="login()" color="dark">Entrar</button>
-    <button ion-button block outline (click)="trampa()" color="dark">Solicitar acceso</button>
+    <div class="container">
+      <!-- <h2 color="pink"> UEApp </h2> -->
+      <div class="prueba">
+        <ion-avatar>
+          <img src="assets/imgs/logo2.png"><img>
+        </ion-avatar>
+      </div>
+      <ion-item class="items">
+        <ion-label color="pink" floating>Totem/Nombre</ion-label>
+        <ion-input name="username" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item class="items">
+        <ion-label color="pink" floating>Contraseña</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <br>
+      <button ion-button block outline (click)="login()" color="pink">Entrar</button>
+      <button ion-button block outline (click)="trampa()" color="pink">Solicitar acceso</button>
+    </div>
   </form>
 </ion-content>

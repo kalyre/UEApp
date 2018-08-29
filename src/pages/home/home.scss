@@ -5,4 +5,37 @@ page-home {
       background-size: cover;
       background-position-x: 50%;
   }
+
+  //Contenedor del login:
+  .container {
+    padding: 16px;
+    background-color: #77808e;
+    //Rounded border:
+    border-radius: 5px;
+    border: 2px solid black;
+
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+    // justify-content: center;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // width: 300px;
+    // height: 200px;
+
+    //Sombras:
+    box-shadow: 10px 10px 5px grey;
+  }
+
+  .items {
+    background-color: #77808e;
+  }
+
+  img{
+    height:150;
+    width: auto;
+    margin: auto;
+    display: block;
+  }
 }
